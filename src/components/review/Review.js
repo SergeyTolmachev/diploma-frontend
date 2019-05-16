@@ -1,10 +1,11 @@
 import React from 'react';
 import axios from 'axios';
 
-import Paper from '@material-ui/core/Paper';
+import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import { withStyles } from '@material-ui/core/styles';
 
+import ReviewForm from './ReviewForm';
 import ReviewItem from './ReviewItem';
 
 const styles = theme => ({
@@ -36,20 +37,28 @@ class Review extends React.Component {
     const { classes } = this.props;
     const { reviews } = this.state;
     return (
-      <div className={classes.reviewBox}>
-        <Typography variant="body1" align="center"> Отзывы </Typography>
-        {
-          reviews && reviews.map(review => (
-            <ReviewItem
-              key={review.id}
-              id={review.id}
-              text={review.text}
-              mark={review.mark}
-              createdBy={review.createdBy}
-            />
-          ))
-        }
-      </div>
+      <Grid container xs={12} spacing={8}>
+        <Grid item xs={12}>
+          <Typography variant="body1" align="center"> Отзывы </Typography>
+        </Grid>
+        <Grid item xs={6}>
+          {
+            reviews && reviews.map(review => (
+              <ReviewItem
+                key={review.id}
+                id={review.id}
+                text={review.text}
+                mark={review.mark}
+                createdBy={review.createdBy}
+                createdAt={review.createdAt}
+              />
+            ))
+          }
+        </Grid>
+        <Grid item xs={6}>
+          <ReviewForm/>
+        </Grid>
+      </Grid>
     );
   }
 }

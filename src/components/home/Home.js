@@ -8,16 +8,14 @@ import Typography from '@material-ui/core/Typography';
 import { withStyles } from '@material-ui/core/styles';
 
 const styles = theme => ({
-  paragraph: {
-    marginTop: 10,
-  }
+
 });
 
 function Home(props) {
   const { classes } = props;
   return (
     <div>
-      <Typography variant="h5" align="center" className={classes.paragraph}>
+      <Typography variant="h5" align="center">
         Добро пожаловать!
       </Typography>
       <Typography variant="body1">
