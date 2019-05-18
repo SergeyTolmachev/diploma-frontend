@@ -1,5 +1,5 @@
 import React from 'react';
-import { DateTime } from 'luxon';
+import {DateTime} from 'luxon';
 
 import Avatar from '@material-ui/core/Avatar';
 import Grid from '@material-ui/core/Grid';
@@ -24,20 +24,20 @@ const styles = theme => ({
 });
 
 function ReviewItem(props) {
-  const {id, text, mark, createdAt, createdBy, classes} = props;
+  const {text, mark, createdAt, createdBy, classes} = props;
 
   let marks = [];
 
   if (mark) {
-    for (let i = 1; i <= mark; i++) {
-      marks.push(<StarIcon color="primary"/>);
+    for (let i = 1; i <= 5; i++) {
+      marks.push(<StarIcon color={i <= mark ? "primary" : "inherit"} key={i}/>);
     }
   }
 
   const date = DateTime.fromISO(createdAt).toFormat('D T');
 
   return (<Paper className={classes.review}>
-      <Grid container spasing={8} xs={12}>
+      <Grid container spasing={8}>
         <Grid item>
           <Avatar className={classes.avatar} xs={2}>
             {

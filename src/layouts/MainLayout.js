@@ -7,6 +7,7 @@ import { withStyles } from '@material-ui/core/styles';
 import Footer from '../components/footer/Footer';
 import Home from '../components/home/Home';
 import Login from '../components/login/Login';
+import Order from '../components/order/Order';
 import Navbar from '../components/navbar/Navbar';
 import Paper from '@material-ui/core/Paper';
 import Registration from '../components/registration/Registration';
@@ -23,7 +24,7 @@ class MainLayout extends React.Component {
   render() {
     const { classes } = this.props;
     return (
-      <Grid container xs={12}>
+      <Grid container>
         <Grid item xs={12}>
           <Navbar/>
         </Grid>
@@ -33,6 +34,7 @@ class MainLayout extends React.Component {
             <Switch>
               <Route exact path='/' component={Home}></Route>
               <Route path='/login' component={Login}></Route>
+              <Route path='/order' component={Order}></Route>
               <Route path='/registration' component={Registration}></Route>
             </Switch>
             <Review/>
