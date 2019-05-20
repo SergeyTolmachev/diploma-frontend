@@ -40,6 +40,7 @@ class Login extends React.Component {
       },
     }).then((result) => {
       localStorage.setItem('token', result.data.token);
+      localStorage.setItem('type', result.data.type);
       window.location.reload();
     }).catch((error) => {
       console.log(error);

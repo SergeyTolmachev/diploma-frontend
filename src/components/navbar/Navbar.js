@@ -20,23 +20,26 @@ class Navbar extends React.Component {
 
   state = {
     isAuth: false,
+    authType: "0",
   };
 
   componentDidMount = () => {
     const token = localStorage.getItem('token');
+    const type = localStorage.getItem('type');
     if (token) {
-      this.setState({ ...this.state, isAuth: true});
+      this.setState({ ...this.state, isAuth: true, authType: type}, () => {console.log(this.state)});
     }
   };
 
   handleExit = () => {
     localStorage.removeItem('token');
-    this.setState({ ...this.state, isAuth: false});
+    localStorage.removeItem('type');
+    this.setState({ ...this.state, isAuth: false, type: "0"});
   };
 
   render() {
     const { classes } = this.props;
-    const { isAuth } = this.state;
+    const { isAuth, authType } = this.state;
     return (
           <AppBar position="static" color="primary">
             <Toolbar color="inherit">
@@ -78,6 +81,16 @@ class Navbar extends React.Component {
                   onClick={this.handleExit}
                 >
                   Log out
+                </Button>
+              }
+              {
+                isAuth && authType === "2" && <Button
+                  variant="outlined"
+                  component={Link}
+                  to="/orders"
+                  className={classes.buttons}
+                >
+                  Orders
                 </Button>
               }
 
