@@ -35,6 +35,7 @@ class Navbar extends React.Component {
     localStorage.removeItem('token');
     localStorage.removeItem('type');
     this.setState({ ...this.state, isAuth: false, type: "0"});
+    window.location.reload();
   };
 
   render() {
@@ -91,6 +92,16 @@ class Navbar extends React.Component {
                   className={classes.buttons}
                 >
                   Orders
+                </Button>
+              }
+              {
+                (!isAuth || (isAuth && authType !== "2")) && <Button
+                  variant="outlined"
+                  component={Link}
+                  to="/order"
+                  className={classes.buttons}
+                >
+                  Make an order
                 </Button>
               }
 

@@ -19,18 +19,31 @@ const styles = theme => ({
     padding: 15,
     marginTop: 10,
   },
+  footer: {
+    position: 'absolute',
+    bottom: '0',
+    width: '100%',
+  },
+  mainBody: {
+    minHeight: '82vh',
+  },
+  container: {
+    backgroundImage: 'url(https://i.gyazo.com/75d310cb7582b99b62a749e88888d6ab.jpg)',
+    backgroundRepeat: 'no-repeat',
+    backgroundSize: 'cover',
+  }
 });
 
 class MainLayout extends React.Component {
   render() {
     const { classes } = this.props;
     return (
-      <Grid container>
+      <Grid container className={classes.container}>
         <Grid item xs={12}>
           <Navbar/>
         </Grid>
         <Grid item xs={2}/>
-        <Grid item xs={8}>
+        <Grid item xs={8} className={classes.mainBody}>
           <Paper className={classes.main}>
             <Switch>
               <Route exact path='/' component={Home}></Route>
@@ -44,7 +57,7 @@ class MainLayout extends React.Component {
         </Grid>
         <Grid item xs={2}/>
         <Grid item xs={12}>
-          <Footer/>
+          <Footer className={classes.footer}/>
         </Grid>
       </Grid>
     )
